@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useEffect, useState } from "react";
 
 import { getProdotti, getProdotto, createProdotto, updateProdotto, deleteProdotto } from "../axios";
@@ -11,9 +13,7 @@ const ProdottiPage = () => {
   useEffect(() => {
     getProdotti().then(response => setProdotti(response.data)).catch(error => console.error(error));
   }, []);
-
   
-
   return (
     <div className="container">
       <div className="row">
