@@ -1,0 +1,42 @@
+<%= form_with(model: utente) do |form| %>
+  <% if utente.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(utente.errors.count, "error") %> prohibited this utente from being saved:</h2>
+
+      <ul>
+        <% utente.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :username, style: "display: block" %>
+    <%= form.text_field :username %>
+  </div>
+
+  <div>
+    <%= form.label :password_digest, style: "display: block" %>
+    <%= form.text_field :password_digest %>
+  </div>
+
+  <div>
+    <%= form.label :nome, style: "display: block" %>
+    <%= form.text_field :nome %>
+  </div>
+
+  <div>
+    <%= form.label :cognome, style: "display: block" %>
+    <%= form.text_field :cognome %>
+  </div>
+
+  <div>
+    <%= form.label :data_nascita, style: "display: block" %>
+    <%= form.date_field :data_nascita %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
