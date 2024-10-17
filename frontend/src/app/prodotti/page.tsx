@@ -1,5 +1,7 @@
 import React from "react";
 
+import { mostraProdotti } from "../axios";
+
 const ProdottiPage = () => {
   return (
     <div className="container">
