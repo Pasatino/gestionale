@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-import { mostraProdotti } from "../axios";
+import { getProdotti, getProdotto, createProdotto, updateProdotto, deleteProdotto } from "../axios";
 
 const ProdottiPage = () => {
+
+  const [prodotti, setProdotti] = useState([]);
+  const [newProdotto, setNewProdotto] = useState('');
+
+  /* Con questa funzione recupero tutti i prodotti quando la pagina viene caricata */
+  useEffect(() => {
+    getProdotti().then(response => setProdotti(response.data)).catch(error => console.error(error));
+  }, []);
+
+  
+
   return (
     <div className="container">
       <div className="row">
