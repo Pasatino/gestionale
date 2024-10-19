@@ -3,7 +3,9 @@ class ProdottosController < ApplicationController
 
   # GET /prodottos or /prodottos.json
   def index
-    @prodottos = Prodotto.all
+    Rails.logger.info "Ricevuta richiesta all'endpoint prodottos#index"
+  @prodottos = Prodotto.all
+  render json: @prodottos
   end
 
   # GET /prodottos/1 or /prodottos/1.json
