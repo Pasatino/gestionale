@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { getProducts, createProduct } from "../axios";
+import { getProducts, createProduct, deleteProduct } from "../axios";
 
 import type { Prodotto , TipoProdotto} from "../axios";
 
@@ -67,6 +67,17 @@ const ProdottiPage = () => {
     }
   };
 
+  const handleDelete = async (id: number) => {
+    try {
+      await deleteProduct(id);
+      setProdotti(prodotti.filter((prodotto) => prodotto.id !== id));
+      alert('Prodotto eliminato con successo!');
+    } catch (error) {
+      console.error("Errore nell'eliminazione del prodotto:", error);
+      alert("Errore nell'eliminazione del prodotto");
+    }
+  };
+
   return (
     <div className="container">
       <h1 className="my-4">Lista Prodotti</h1>
@@ -116,6 +127,7 @@ const ProdottiPage = () => {
                   <th scope="col">Descrizione</th>
                   <th scope="col">Tipo Prodotto</th>
                   <th scope="col">Data Inserimento</th>
+                  <th scope="col">Azioni</th>
                 </tr>
               </thead>
               <tbody>
@@ -125,6 +137,9 @@ const ProdottiPage = () => {
                     <td>{product.descrizione}</td>
                     <td>{product.tipo_prodotto?.tipo}</td>
                     <td>{new Date(product.data_inserimento).toLocaleDateString()}</td>
+                    <td>
+                        <button className="btn btn-danger" onClick={() => handleDelete(product.id!)}>Elimina</button>
+                    </td>
                   </tr>
                 ))}
               </tbody>
