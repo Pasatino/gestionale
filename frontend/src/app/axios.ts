@@ -10,7 +10,7 @@ export interface TipoProdotto {
 
 // Definizione dell'interfaccia per il Prodotto
 export interface Prodotto {
-  id: number;
+  id?: number;
   nome: string;
   descrizione: string;
   data_inserimento: string;
@@ -40,7 +40,7 @@ export const getProduct = async (id: number): Promise<Prodotto> => {
   return response.data;
 };
 
-export const createProduct = async (
+/* export const createProduct = async (
   productData: Omit<Prodotto, "id">
 ): Promise<Prodotto> => {
   const response: AxiosResponse<Prodotto> = await axios.post(
@@ -48,7 +48,18 @@ export const createProduct = async (
     productData
   );
   return response.data;
+}; */
+
+export const createProduct = async (
+  productData: Omit<Prodotto, "id" | "tipo_prodotto"> & { tipo_prodotto_id: number }
+): Promise<Prodotto> => {
+  const response: AxiosResponse<Prodotto> = await axios.post(
+    `${API_URL}/prodottos`,
+    productData
+  );
+  return response.data;
 };
+
 
 export const updateProduct = async (
   id: number,

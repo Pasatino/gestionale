@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import 'bootstrap-italia/dist/css/bootstrap-italia.min.css'
+
 import Navbar from "@/app/components/navbar/navbar"
+import Script from "next/script";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,6 +32,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Navbar/>
         {children}
+        <Script src="/bootstrap-italia.bundle.min.js" />
       </body>
     </html>
   );
