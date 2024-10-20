@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   namespace :api do
+  post 'login', to: 'auth#login'
+  post 'register', to: 'auth#register'
   resources :tipo_prodottos
   resources :prodottos
   resources :utentes

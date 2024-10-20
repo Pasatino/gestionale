@@ -1,5 +1,6 @@
 module Api
     class ProdottosController < ApplicationController
+        include JwtAuthenticatable
         before_action :set_prodotto, only: [:show, :update, :destroy]
 
         # GET /api/prodottos

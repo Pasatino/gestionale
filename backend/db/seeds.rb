@@ -47,6 +47,14 @@ Prodotto.create!([
   }
 ])
 
+Utente.create(
+  username: 'admin',
+  password: 'password', 
+  nome: 'Admin', 
+  cognome: 'User', 
+  data_nascita: Date.new(1990, 1, 1)
+)
+
 puts "Seed data creati con successo!"
 puts "Riepilogo:"
 puts "- Tipi di prodotto creati: #{TipoProdotto.count}"
