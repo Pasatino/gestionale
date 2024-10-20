@@ -27,39 +27,34 @@ const ProdottiPage = () => {
 
   return (
     <div className="container">
-      <div className="row">
-        <div className="col-12">
-          <div className="row">
-            <div className="d-flex justify-content-center">
-              <h1>Lista Prodotti</h1>
-            </div>
+      <h1 className="my-4">Lista Prodotti</h1>
+      <div className="card-wrapper card-space">
+        <div className="card card-bg">
+          <div className="card-header">
+            <h5 className="card-title">Prodotti Disponibili</h5>
           </div>
-        </div>
-        <div className="col-12">
-          <table className="table table-striped table-hover">
-            <thead className="table-dark">
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Descrizione</th>
-                <th scope="col">Data Inserimento</th>
-                <th scope="col">Tipo Prodotto ID</th>
-              </tr>
-            </thead>
-            <tbody>
-              {prodotti.map((prodotto) => (
-                <tr key={prodotto.id}>
-                  <th scope="row">{prodotto.id}</th>
-                  <td>{prodotto.nome}</td>
-                  <td>{prodotto.descrizione}</td>
-                  <td>
-                    {new Date(prodotto.data_inserimento).toLocaleDateString()}
-                  </td>
-                  <td>{prodotto.tipo_prodotto?.tipo}</td>
+          <div className="card-body">
+            <table className="table">
+              <thead>
+                <tr>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Descrizione</th>
+                  <th scope="col">Tipo Prodotto</th>
+                  <th scope="col">Data Inserimento</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {prodotti.map((product) => (
+                  <tr key={product.id}>
+                    <td>{product.nome}</td>
+                    <td>{product.descrizione}</td>
+                    <td>{product.tipo_prodotto?.tipo}</td>
+                    <td>{new Date(product.data_inserimento).toLocaleDateString()}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
