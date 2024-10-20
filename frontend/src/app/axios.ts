@@ -3,16 +3,22 @@ import axios, { AxiosResponse } from "axios";
 const API_URL = "http://localhost:3000/api";
 
 // Definizione dell'interfaccia per il tipo Prodotto
-interface Prodotto {
+export interface TipoProdotto {
+  id: number;
+  tipo: string;
+}
+
+// Definizione dell'interfaccia per il Prodotto
+export interface Prodotto {
   id: number;
   nome: string;
   descrizione: string;
   data_inserimento: string;
-  tipo_prodotto_id: number;
+  tipo_prodotto: TipoProdotto;
 }
 
 // Definizione dell'interfaccia per il tipo Utente
-interface Utente {
+export interface Utente {
   id: number;
   nome: string;
   email: string;

@@ -2,13 +2,11 @@ puts "Pulizia del database..."
 Prodotto.destroy_all
 TipoProdotto.destroy_all
 
-# Crea i nuovi TipoProdotto
 puts "Creazione dei tipi di prodotto..."
 buste = TipoProdotto.create!(tipo: "Buste")
 carta = TipoProdotto.create!(tipo: "Carta")
 toner = TipoProdotto.create!(tipo: "Toner")
 
-# Crea i nuovi Prodotti
 puts "Creazione dei prodotti..."
 Prodotto.create!([
   {

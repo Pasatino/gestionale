@@ -1,15 +1,11 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { getProducts } from "../axios";
+import { getProducts, createProduct } from "../axios";
 
-interface Prodotto {
-  id: number;
-  nome: string;
-  descrizione: string;
-  data_inserimento: string;
-  tipo_prodotto_id: number;
-}
+import type { Prodotto , TipoProdotto} from "../axios";
+
+
 
 const ProdottiPage = () => {
   const [prodotti, setProdotti] = useState<Prodotto[]>([]);
@@ -23,6 +19,8 @@ const ProdottiPage = () => {
         console.error("Errore nel recupero dei prodotti:", error);
       }
     };
+
+    
 
     fetchProdotti();
   }, []);
@@ -57,7 +55,7 @@ const ProdottiPage = () => {
                   <td>
                     {new Date(prodotto.data_inserimento).toLocaleDateString()}
                   </td>
-                  <td>{prodotto.tipo_prodotto_id}</td>
+                  <td>{prodotto.tipo_prodotto?.tipo}</td>
                 </tr>
               ))}
             </tbody>
